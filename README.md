@@ -4,3 +4,4 @@
 2.Quick Sort
 3.Checking Anagram
 4.Binary Search
+5.Depth First Search (DFS) algorithm
