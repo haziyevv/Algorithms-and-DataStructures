@@ -86,7 +86,7 @@ def isAnagram(s, t):
 def binarySearch(A, target):
     start = 0
     end = len(A) - 1
-    while start < end:
+    while start <= end:
         middle = (start + end) // 2
         if A[middle] == target:
             return middle
