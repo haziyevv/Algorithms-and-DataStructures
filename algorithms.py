@@ -1,49 +1,36 @@
-import pdb
+def merge_sort(arr):
+    if len(arr) == 1:
+        return arr
+    else:
+        mid = len(arr) // 2
+        left = merge_sort(arr[:mid])
+        right = merge_sort(arr[mid:])
         
-def merge_sort(list_given):
-    if len(list_given) < 2:
-        return list_given
+        if left and right:
+            return merge(left, right)
+        elif left:
+            return left
+        elif right:
+            return right
     
-    mid = len(list_given) // 2
-    left = list_given[0:mid]
-    right = list_given[mid:]
     
-    s_left = merge_sort(left)
-    s_right = merge_sort(right)
-
-    result = merge(s_left, s_right)
-    return result
- 
-
-def merge(lf, ls):
-    liste = []
-    i = 0
-    j = 0
-    
-    while i < len(lf) and j < len(ls):
-        if lf[i] < ls[j]:
-            liste.append(lf[i])
+def merge(l,r):
+    total = []
+    i,j=0,0
+    while  i < len(l) and j < len(r):
+        if l[i] <= r[j]:
+            total.append(l[i])
             i += 1
-            
-        elif lf[i] > ls[j]:
-            liste.append(ls[j])
-            j += 1
-                
         else:
-            liste.extend([lf[i], ls[j]])
-            i += 1
+            total.append(r[j])
             j += 1
     else:
-        if i < len(lf):
-            while i < len(lf):
-                liste.append(lf[i])
-                i+=1
-        elif j < len(ls):
-            while j < len(ls):
-                liste.append(ls[j])
-                j+=1            
-
-    return liste
+        if i == len(l):
+            total.extend(r[j:])
+        elif j == len(r):
+            total.extend(l[i:])
+            
+    return total
 
 
 def partition(A, start, end):
