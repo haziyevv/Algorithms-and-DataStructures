@@ -1,5 +1,5 @@
 def merge_sort(arr):
-    if len(arr) == 1:
+    if len(arr) < 2:
         return arr
     else:
         mid = len(arr) // 2
